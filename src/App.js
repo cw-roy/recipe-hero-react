@@ -1,13 +1,14 @@
 import "./App.css";
+import Header from './Header';
+// import RecipeList from './RecipeList';
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMinusCircle, faPlus } from "@fortawesome/free-solid-svg-icons"
 
 const App = () => {
   return (
   <div id="the-app">
-    <header className="app-header">
-      <h1>Recipe Hero</h1>
-    </header>
+    <Header />
     <main>
       <section className="ingredient-search">
         <h2>Search Recipes By Ingredient</h2>
@@ -43,7 +44,7 @@ const App = () => {
           <div className="recipe-card">
             <h2>Framed Eggs</h2>
             <div className="recipe-description">
-              <img src="images/framed-egg.jpg" />
+              <img src="images/framed-egg.jpg" alt=""/>
               <p>
                 Egg in frame or toad in the hole—whatever you choose to call it, this recipe
                 is a super fun way to spruce up the classic eggs and toast breakfast. Leave
@@ -75,7 +76,7 @@ const App = () => {
           <div className="recipe-card">
             <h2>Cheesy Eggs</h2>
             <div className="recipe-description">
-              <img src="images/cheesy-eggs.jpg" />
+              <img src="images/cheesy-eggs.jpg" alt=""/>
               <p>
                 Some recipes are deceptively simple. Although I first learnt how to make
                 scrambled eggs with cheese when I was about 13, I just really did not
@@ -104,7 +105,7 @@ const App = () => {
           <div className="recipe-card">
             <h2>Toast</h2>
             <div className="recipe-description">
-              <img src="images/bread.jpg" />
+              <img src="images/bread.jpg" alt=""/>
               <p>
                 Toast is almost as old as civilization itself, made by the early Egyptians
                 to put some spark back in stale bread. It's still one of the most versatile,
@@ -132,7 +133,7 @@ const App = () => {
           <div className="recipe-card">
             <h2>Scrambled Eggs</h2>
             <div className="recipe-description">
-              <img src="images/scrambled-eggs.webp" />
+              <img src="images/scrambled-eggs.webp" alt=""/>
               <p>
                 Scrambled eggs may be a relatively easy meal to make, but it turns out you
                 are probably doing it wrong - according to chef Gordon Ramsay. Although
@@ -163,7 +164,7 @@ const App = () => {
           <div className="recipe-card">
             <h2>Cheesy Bacon</h2>
             <div className="recipe-description">
-              <img src="images/cheesy-bacon.jpg" />
+              <img src="images/cheesy-bacon.jpg" alt=""/>
               <p>
                 nd it is the star of one of the most classic hors d’oeuvres out there,
                 the cheese straw. It’s been a while since I made cheese straws, but they
