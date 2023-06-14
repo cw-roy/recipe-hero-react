@@ -1,6 +1,5 @@
 import "./App.css";
 import Header from './Header';
-// import RecipeList from './RecipeList';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMinusCircle, faPlus } from "@fortawesome/free-solid-svg-icons"
