@@ -1,24 +1,40 @@
-import React, { useState } from "react";
+// IngredientSearch.js
 
-const IngredientSearch = ({ recipes, onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+import React, { useState } from 'react';
+import RecipeCard from './RecipeCard';
+import IngredientPicker from './IngredientPicker';
 
-  const handleSearch = () => {
-    const filteredRecipes = recipes.filter((recipe) =>
-      recipe.ingredients.includes(searchTerm)
-    );
-    onSearch(filteredRecipes);
+const IngredientSearch = ({ recipes }) => {
+  const [selectedIngredient, setSelectedIngredient] = useState('');
+  const [filteredRecipes, setFilteredRecipes] = useState(recipes);
+
+  const ingredients = recipes.reduce((allIngredients, recipe) => {
+    return allIngredients.concat(recipe.ingredients);
+  }, []);
+
+  const handleIngredientChange = (event) => {
+    const ingredient = event.target.value;
+    setSelectedIngredient(ingredient);
+    if (ingredient) {
+      const filtered = recipes.filter((recipe) =>
+        recipe.ingredients.includes(ingredient)
+      );
+      setFilteredRecipes(filtered);
+    } else {
+      setFilteredRecipes(recipes);
+    }
   };
 
   return (
     <div className="ingredient-search">
-      <input
-        type="text"
-        placeholder="Search by ingredient..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+      <IngredientPicker
+        ingredients={Array.from(new Set(ingredients))}
+        selectedIngredient={selectedIngredient}
+        onChange={handleIngredientChange}
       />
-      <button onClick={handleSearch}>Search</button>
+      {filteredRecipes.map((recipe, index) => (
+        <RecipeCard key={index} recipe={recipe} />
+      ))}
     </div>
   );
 };
