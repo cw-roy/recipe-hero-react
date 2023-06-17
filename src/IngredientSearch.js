@@ -1,6 +1,7 @@
 // IngredientSearch.js
 
 import React, { useState, useEffect } from 'react';
+import IngredientList from './IngredientList';
 import RecipeCard from './RecipeCard';
 import MultiIngredientPicker from './MultiIngredientPicker';
 
@@ -45,6 +46,7 @@ const IngredientSearch = ({ recipes }) => {
         selectedIngredients={selectedIngredients}
         onChange={handleIngredientChange}
       />
+      <IngredientList ingredients={selectedIngredients} />
       {!isSelectionValid && <p>No recipes match the selected ingredients. Please modify your selection.</p>}
       {isSelectionValid && filteredRecipes.map((recipe, index) => (
         <RecipeCard key={index} recipe={recipe} />
