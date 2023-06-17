@@ -47,7 +47,7 @@ const IngredientSearch = ({ recipes }) => {
         onChange={handleIngredientChange}
       />
       <IngredientList ingredients={selectedIngredients} />
-      {!isSelectionValid && <p>No recipes match the selected ingredients. Please modify your selection.</p>}
+      {!isSelectionValid && <p>No recipes match all of the selected ingredients. Please modify your selection.</p>}
       {isSelectionValid && filteredRecipes.map((recipe, index) => (
         <RecipeCard key={index} recipe={recipe} />
       ))}
