@@ -1,4 +1,4 @@
-// IngredientSearch.js
+// Test version of IngredientSearch
 
 import React, { useState, useEffect } from 'react';
 import IngredientList from './IngredientList';
@@ -10,14 +10,14 @@ const IngredientSearch = ({ recipes }) => {
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
   const [isSelectionValid, setIsSelectionValid] = useState(true);
 
-  const handleIngredientChange = (ingredient, checked) => {
-    if (checked) {
-      setSelectedIngredients((prevIngredients) => [...prevIngredients, ingredient]);
-    } else {
-      setSelectedIngredients((prevIngredients) =>
-        prevIngredients.filter((selectedIngredient) => selectedIngredient !== ingredient)
-      );
-    }
+  const handleAddIngredient = (ingredient) => {
+    setSelectedIngredients((prevIngredients) => [...prevIngredients, ingredient]);
+  };
+
+  const handleRemoveIngredient = (ingredient) => {
+    setSelectedIngredients((prevIngredients) =>
+      prevIngredients.filter((selectedIngredient) => selectedIngredient !== ingredient)
+    );
   };
 
   useEffect(() => {
@@ -44,13 +44,13 @@ const IngredientSearch = ({ recipes }) => {
       <MultiIngredientPicker
         ingredients={Array.from(new Set(recipes.reduce((acc, recipe) => [...acc, ...recipe.ingredients], [])))}
         selectedIngredients={selectedIngredients}
-        onChange={handleIngredientChange}
+        onAddIngredient={handleAddIngredient}
+        onRemoveIngredient={handleRemoveIngredient}
       />
       <IngredientList ingredients={selectedIngredients} />
       {!isSelectionValid && <p>No recipes match all of the selected ingredients. Please modify your selection.</p>}
-      {isSelectionValid && filteredRecipes.map((recipe, index) => (
-        <RecipeCard key={index} recipe={recipe} />
-      ))}
+      {isSelectionValid &&
+        filteredRecipes.map((recipe, index) => <RecipeCard key={index} recipe={recipe} />)}
     </div>
   );
 };
