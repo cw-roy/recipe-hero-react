@@ -11,8 +11,15 @@ const IngredientSearch = ({ recipes }) => {
   const [isSelectionValid, setIsSelectionValid] = useState(true);
 
   const handleAddIngredient = (ingredient) => {
-    setSelectedIngredients((prevIngredients) => [...prevIngredients, ingredient]);
+    // Check if the ingredient is already selected
+    if (!selectedIngredients.includes(ingredient)) {
+      setSelectedIngredients((prevIngredients) => [...prevIngredients, ingredient]);
+    }
   };
+  
+  // const handleAddIngredient = (ingredient) => {
+  //   setSelectedIngredients((prevIngredients) => [...prevIngredients, ingredient]);
+  // };
 
   const handleRemoveIngredient = (ingredient) => {
     setSelectedIngredients((prevIngredients) =>
