@@ -1,11 +1,14 @@
-// MultiIngredientPicker.js
+// Test version of MultiIngredientPicker.js
 
 import React from 'react';
 
-const MultiIngredientPicker = ({ ingredients, selectedIngredients, onChange }) => {
-  const handleIngredientChange = (event) => {
-    const { value, checked } = event.target;
-    onChange(value, checked);
+const MultiIngredientPicker = ({ ingredients, selectedIngredients, onAddIngredient, onRemoveIngredient }) => {
+  const handleAddClick = (ingredient) => {
+    onAddIngredient(ingredient);
+  };
+
+  const handleRemoveClick = (ingredient) => {
+    onRemoveIngredient(ingredient);
   };
 
   return (
@@ -13,14 +16,9 @@ const MultiIngredientPicker = ({ ingredients, selectedIngredients, onChange }) =
       <label>Select ingredients:</label>
       {ingredients.map((ingredient, index) => (
         <div key={index}>
-          <input
-            type="checkbox"
-            id={ingredient}
-            value={ingredient}
-            checked={selectedIngredients.includes(ingredient)}
-            onChange={handleIngredientChange}
-          />
-          <label htmlFor={ingredient}>{ingredient}</label>
+          <span>{ingredient}</span>
+          <button onClick={() => handleAddClick(ingredient)}>Add</button>
+          <button onClick={() => handleRemoveClick(ingredient)}>Remove</button>
         </div>
       ))}
     </div>
